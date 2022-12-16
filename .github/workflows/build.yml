@@ -3,7 +3,7 @@ name: Build  CI/CD
 on:
   workflow_dispatch:
   push:
-    branches: [ main,stg ]
+    branches: [ master ]
 jobs:
   Dev-BUILD-RELEASE-JOB:
     environment: dev
