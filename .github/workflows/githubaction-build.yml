@@ -21,12 +21,16 @@ jobs:
       - name: Available platforms setup/downloaded by QEMU
         run: echo ${{ steps.qemu.outputs.platforms }} 
 
-      - name: Configure AWS credentials
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_CICD }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CICD }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CICD}}
+        #   aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }} # if you have/need it
           aws-region: us-east-1
+      - name: List current DIR
+        run: ls
+        
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
