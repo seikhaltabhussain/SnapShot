@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1.2.0
+    - name: Available platforms setup/downloaded by QEMU
+      run: echo ${{ steps.qemu.outputs.platforms }} 
+
         
     - run: ls -lrt
     #- run: ls -lrt dist
