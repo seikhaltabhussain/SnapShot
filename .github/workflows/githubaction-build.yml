@@ -4,7 +4,7 @@ on:
   #push: 
     #branches: [ master ]
 env:
-  DOCKER_HUB_ORG_WORKSPACE_NAME: "benethon"
+  DOCKER_HUB_ORG_WORKSPACE_NAME: "benthon"
   DOCKER_HUB_REPOSITORY_NAME: "snapshot"
   AWS_REGION: "us-east-1"                   # set this to your preferred AWS region, e.g. us-west-1
   ECS_TASK_DEFINITION_FILE: "task-def.json" # set this to the path to your Amazon ECS task definition file, e.g. .aws/task-definition.json                          
