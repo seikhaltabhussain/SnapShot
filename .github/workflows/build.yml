@@ -2,8 +2,8 @@ name: Build  CI/CD
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
+#   push:
+#     branches: [ master ]
 jobs:
   Dev-BUILD-RELEASE-JOB:
     environment: dev
