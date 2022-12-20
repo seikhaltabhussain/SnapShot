@@ -13,8 +13,8 @@ RUN npm install
 
 # Copying all the files in our project
 #COPY . ./
-COPY ./src ./src
-COPY ./public ./public
+COPY ./src
+COPY ./public
 COPY ./snapscout.png ./app
 
 # Building our application
