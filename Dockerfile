@@ -22,7 +22,7 @@ RUN npm run build
 
 
 # start app
-#CMD ["npm", "start"]    
+CMD ["npm", "start"]    
 
 
 # Fetching the latest nginx image
