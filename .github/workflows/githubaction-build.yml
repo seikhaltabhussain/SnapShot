@@ -15,6 +15,9 @@ jobs:
       ECS_SERVICE: "dev-snapshot-app-service"
       ECS_CLUSTER: "dev-snapshot-app-cluster"
       ECS_TASK_DEFINITION_NAME: "dev-snapshot-app-task"
+      ECR_REPOSITORY: snapshot
+      IMAGE_TAG: latest
+      ecr_registry1: "611600309450.dkr.ecr.us-east-1.amazonaws.com"
 
     steps:
     - uses: actions/checkout@v2
@@ -39,8 +42,6 @@ jobs:
     - name: Push image to Amazon ECR
       env:
          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: snapshot
-         IMAGE_TAG: latest
       run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -53,12 +54,10 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       env:
          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: snapshot
-         IMAGE_TAG: latest
       with:
           task-definition: ./${{ env.ECS_TASK_DEFINITION_FILE }}
           container-name: ${{ env.CONTAINER_NAME }}
-          image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          image: $ecr_registry1/$ECR_REPOSITORY:$IMAGE_TAG
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
